@@ -3,8 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Random</PackageProjectUrl>
     <Version>1.0.1</Version>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Description>Only includes a full cycle PRNG at the moment</Description>
   </PropertyGroup>
   <ItemGroup>
