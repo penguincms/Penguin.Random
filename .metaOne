@@ -1,0 +1,49 @@
+{
+  "$id": "1",
+  "$type": "Penguin.Management.MetaData, Penguin.Management",
+  "DependencyGraph": {
+    "$id": "2",
+    "$type": "Penguin.Management.Environment.DependencyGraph, Penguin.Management",
+    "_path": "C:\\Penguin\\Repositories\\Penguin.Random",
+    "_projectFile": "C:\\Penguin\\Repositories\\Penguin.Random\\Penguin.Random.csproj",
+    "Dependants": {
+      "$id": "3",
+      "$values": []
+    },
+    "Dependencies": {
+      "$id": "4",
+      "$values": [
+        {
+          "$id": "5",
+          "$type": "Penguin.Management.Environment.DependencyGraph, Penguin.Management",
+          "_path": "C:\\Penguin\\Repositories\\Penguin.Extensions.Math",
+          "_projectFile": "C:\\Penguin\\Repositories\\Penguin.Extensions.Math\\Penguin.Extensions.Math.csproj",
+          "Dependants": {
+            "$id": "6",
+            "$values": [
+              {
+                "$ref": "2"
+              }
+            ]
+          },
+          "Dependencies": {
+            "$id": "7",
+            "$values": []
+          },
+          "Name": "Penguin.Extensions.Math"
+        }
+      ]
+    },
+    "Name": "Penguin.Random"
+  },
+  "LastBuild": {
+    "$id": "8",
+    "$type": "Penguin.Management.LastBuild, Penguin.Management",
+    "Time": "0001-01-01T00:00:00",
+    "Result": null
+  },
+  "LocalProjectInfo": null,
+  "Generated": "2019-10-25T23:52:59.5046814-07:00",
+  "Path": "C:\\Penguin\\Repositories\\Penguin.Random",
+  "Id": "7b4a2e21-8715-4c84-9541-e768088cbd28"
+}
