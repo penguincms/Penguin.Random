@@ -6,7 +6,7 @@
     <Description>Only includes a full cycle PRNG at the moment</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.Math" Version="1.0.1-63707653241" />
+    <PackageReference Include="Penguin.Extensions.Math" Version="1.0.1-T9LXGUJ" />
   </ItemGroup>
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
 </Project>
