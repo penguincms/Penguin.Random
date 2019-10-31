@@ -15,21 +15,5 @@ namespace Penguin.Random.Extensions
         {
             return rng.Next(0UL, MaxValue);
         }
-
-        /// <summary>Selects an ulong between the two values</summary>
-        /// <param name="rng">The source RNG</param>
-        /// <param name="MinValue">The Minimum value possible (Inclusive)</param>
-        /// <param name="MaxValue">The Maximum value possible (Exclusive)</param>
-        /// <returns>The next value in the sequence between the given values</returns>
-        public static ulong Next(this IRandomGenerator rng, ulong MinValue, ulong MaxValue)
-        {
-            ulong x = rng.Next();
-
-            while (!x.Between(MinValue, MaxValue)) { 
-                x = rng.Next();
-            }
-
-            return x;
-        }
     }
 }

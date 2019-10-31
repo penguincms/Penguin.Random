@@ -6,15 +6,19 @@
 
 namespace Penguin.Random.Interfaces
 {
-  /// <summary>An interface used to define RNG extension methods</summary>
-  public interface IRandomGenerator
-  {
-    /// <summary>Gets the next ulong from the RNG</summary>
-    /// <returns></returns>
-    ulong Next();
+    /// <summary>An interface used to define RNG extension methods</summary>
+    public interface IRandomGenerator
+    {
+        /// <summary>Gets the next ulong from the RNG</summary>
+        /// <returns></returns>
+        ulong Next();
 
-    /// <summary>Gets the next double from the RNG</summary>
-    /// <returns></returns>
-    double NextDouble();
-  }
+        /// <summary>Gets the next ulong from the RNG</summary>
+        /// <returns></returns>
+        ulong Next(ulong min, ulong max);
+
+        /// <summary>Gets the next double from the RNG</summary>
+        /// <returns></returns>
+        double NextDouble();
+    }
 }
