@@ -7,15 +7,15 @@
 namespace Penguin.Random.Interfaces
 {
     /// <summary>An interface used to define RNG extension methods</summary>
-    public interface IRandomGenerator
+    public interface IRandomGenerator<T>
     {
         /// <summary>Gets the next ulong from the RNG</summary>
         /// <returns></returns>
-        ulong Next();
+        T Next();
 
         /// <summary>Gets the next ulong from the RNG</summary>
         /// <returns></returns>
-        ulong Next(ulong min, ulong max);
+        T Next(T min, T max);
 
         /// <summary>Gets the next double from the RNG</summary>
         /// <returns></returns>

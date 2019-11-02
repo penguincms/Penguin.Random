@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 namespace Penguin.Random.Prng.FullCycle
 {
     /// <summary>And implementation of a Xoroshiro128 RNG</summary>
-    public class Xoroshiro128 : IRandomGenerator
+    public class Xoroshiro128 : IRandomGenerator<ulong>
     {
         private static ulong[] JumpValue = new ulong[2]
         {

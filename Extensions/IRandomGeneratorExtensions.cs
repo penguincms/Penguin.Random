@@ -11,9 +11,9 @@ namespace Penguin.Random.Extensions
         /// <param name="rng">The source RNG</param>
         /// <param name="MaxValue">The max value to return (Exclusive)</param>
         /// <returns>The next value in the sequence below the max value</returns>
-        public static ulong Next(this IRandomGenerator rng, ulong MaxValue)
+        public static T Next<T>(this IRandomGenerator<T> rng, T MaxValue)
         {
-            return rng.Next(0UL, MaxValue);
+            return rng.Next(default, MaxValue);
         }
     }
 }
