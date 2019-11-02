@@ -7,6 +7,9 @@
     <AssemblyName>Penguin.Random</AssemblyName>
     <RootNamespace>Penguin.Random</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Penguin.Extensions.Math" Version="1.0.2-T9M3AAF" />
   </ItemGroup>
