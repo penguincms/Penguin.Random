@@ -36,6 +36,15 @@ namespace Penguin.Random.Prng.FullCycle
         }
 
         /// <summary>
+        /// Creates an instance of this RNG using the given state as the starting point
+        /// </summary>
+        /// <param name="state"></param>
+        public SplitMix32(uint seed)
+        {
+            this._seed = seed;
+        }
+
+        /// <summary>
         /// Returns the current machine state so it can be persisted and loaded
         /// </summary>
         /// <returns>The current Machine state</returns>
