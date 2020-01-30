@@ -6,6 +6,7 @@
     <Description>Only includes a full cycle PRNG at the moment</Description>
     <AssemblyName>Penguin.Random</AssemblyName>
     <RootNamespace>Penguin.Random</RootNamespace>
+    <DocumentationFile>Penguin.Random.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
