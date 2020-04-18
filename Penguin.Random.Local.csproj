@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/penguincms/Penguin.Random</PackageProjectUrl>
+    <Version>1.0.1</Version>
+    <Description>Only includes a full cycle PRNG at the moment</Description>
+    <AssemblyName>Penguin.Random</AssemblyName>
+    <RootNamespace>Penguin.Random</RootNamespace>
+    <DocumentationFile>Penguin.Random.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Penguin.Extensions.Math\Penguin.Extensions.Math.Local.csproj" />
+  </ItemGroup>
+  <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
+</Project>
