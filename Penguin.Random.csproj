@@ -12,7 +12,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.Math" Version="1.0.2-T9UW4G4" />
+    <PackageReference Include="Penguin.Extensions.Math" Version="1.0.2-T9VPJBO" />
   </ItemGroup>
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
 </Project>
