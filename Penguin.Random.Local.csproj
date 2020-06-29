@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Random</PackageProjectUrl>
-    <Version>1.0.1</Version>
+    <Version>5.0.0</Version>
     <Description>Only includes a full cycle PRNG at the moment</Description>
     <AssemblyName>Penguin.Random</AssemblyName>
     <RootNamespace>Penguin.Random</RootNamespace>
