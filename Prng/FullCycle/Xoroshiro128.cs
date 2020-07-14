@@ -18,6 +18,7 @@ namespace Penguin.Random.Prng.FullCycle
       13739361407582206667UL,
       15594563132006766882UL
         };
+
         private ulong _seed1;
         private ulong _seed2;
 
@@ -35,6 +36,11 @@ namespace Penguin.Random.Prng.FullCycle
         /// <param name="state"></param>
         public Xoroshiro128(State state)
         {
+            if (state is null)
+            {
+                throw new ArgumentNullException(nameof(state));
+            }
+
             this._seed1 = state._seed1;
             this._seed2 = state._seed2;
         }
@@ -92,7 +98,6 @@ namespace Penguin.Random.Prng.FullCycle
         /// <returns>Next psuedo-random value.</returns>
         public ulong Next(ulong min, ulong max)
         {
-
             ulong s0 = _seed1;
             ulong s1 = _seed2;
 

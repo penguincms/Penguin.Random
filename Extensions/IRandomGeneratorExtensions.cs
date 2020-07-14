@@ -4,6 +4,7 @@ using Penguin.Random.Interfaces;
 namespace Penguin.Random.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     public static class IRandomGeneratorExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
@@ -13,6 +14,11 @@ namespace Penguin.Random.Extensions
         /// <returns>The next value in the sequence below the max value</returns>
         public static T Next<T>(this IRandomGenerator<T> rng, T MaxValue)
         {
+            if (rng is null)
+            {
+                throw new System.ArgumentNullException(nameof(rng));
+            }
+
             return rng.Next(default, MaxValue);
         }
     }

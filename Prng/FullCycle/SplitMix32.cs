@@ -25,13 +25,17 @@ namespace Penguin.Random.Prng.FullCycle
             _seed = unchecked((UInt32)r.Next());
         }
 
-
         /// <summary>
         /// Creates an instance of this RNG using the given state as the starting point
         /// </summary>
         /// <param name="state"></param>
         public SplitMix32(State state)
         {
+            if (state is null)
+            {
+                throw new ArgumentNullException(nameof(state));
+            }
+
             this._seed = state._seed;
         }
 
@@ -72,10 +76,9 @@ namespace Penguin.Random.Prng.FullCycle
         /// <returns>Next psuedo-random value.</returns>
         public UInt32 Next(UInt32 min, UInt32 max)
         {
-
             uint z = Next();
 
-            while(z < min || z >= max)
+            while (z < min || z >= max)
             {
                 z = Next();
             }
