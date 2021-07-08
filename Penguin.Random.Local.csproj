@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Random</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Random</PackageProjectUrl>
     <Version>5.0.5</Version>
     <Description>Only includes a full cycle PRNG at the moment</Description>
     <AssemblyName>Penguin.Random</AssemblyName>
