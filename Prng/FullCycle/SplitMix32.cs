@@ -18,6 +18,7 @@ namespace Penguin.Random.Prng.FullCycle
         /// <summary>
         /// Creates an instance of this RNG using the given state as the starting point
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
         public SplitMix32()
         {
             System.Random r = new System.Random();

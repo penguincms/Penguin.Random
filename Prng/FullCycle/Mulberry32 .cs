@@ -51,6 +51,7 @@ namespace Penguin.Random.Prng.FullCycle
         /// Returns the current machine state so it can be persisted and loaded
         /// </summary>
         /// <returns>The current Machine state</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1024:Use properties where appropriate", Justification = "<Pending>")]
         public Mulberry32.State GetState()
         {
             return new Mulberry32.State()
