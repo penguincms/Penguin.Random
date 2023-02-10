@@ -13,7 +13,7 @@ namespace Penguin.Random.Prng.FullCycle
     /// <summary>And implementation of a Xoroshiro128 RNG</summary>
     public class Xoroshiro128 : IRandomGenerator<ulong>
     {
-        private static ulong[] JumpValue = new ulong[2]
+        private static readonly ulong[] JumpValue = new ulong[2]
         {
       13739361407582206667UL,
       15594563132006766882UL
@@ -41,8 +41,8 @@ namespace Penguin.Random.Prng.FullCycle
                 throw new ArgumentNullException(nameof(state));
             }
 
-            this._seed1 = state._seed1;
-            this._seed2 = state._seed2;
+            _seed1 = state._seed1;
+            _seed2 = state._seed2;
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace Penguin.Random.Prng.FullCycle
         {
             return new Xoroshiro128.State()
             {
-                _seed1 = this._seed1,
-                _seed2 = this._seed2
+                _seed1 = _seed1,
+                _seed2 = _seed2
             };
         }
 
@@ -68,29 +68,29 @@ namespace Penguin.Random.Prng.FullCycle
             ulong num2 = (ulong)(num1 = (long)seed + -7046029254386353131L);
             ulong num3 = (ulong)(((long)num2 ^ (long)(num2 >> 30)) * -4658895280553007687L);
             ulong num4 = (ulong)(((long)num3 ^ (long)(num3 >> 27)) * -7723592293110705685L);
-            this._seed1 = num4 ^ num4 >> 31;
+            _seed1 = num4 ^ (num4 >> 31);
             ulong num5 = (ulong)(num1 + -7046029254386353131L);
             ulong num6 = (ulong)(((long)num5 ^ (long)(num5 >> 30)) * -4658895280553007687L);
             ulong num7 = (ulong)(((long)num6 ^ (long)(num6 >> 27)) * -7723592293110705685L);
-            this._seed2 = num7 ^ num7 >> 31;
+            _seed2 = num7 ^ (num7 >> 31);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static ulong rotl(ulong x, int k)
         {
-            return x << k | x >> 64 - k;
+            return (x << k) | (x >> (64 - k));
         }
 
         /// <summary>Get the next ulong for this instance.</summary>
         /// <returns>Next psuedo-random value.</returns>
         public ulong Next()
         {
-            ulong seed1 = this._seed1;
-            ulong seed2 = this._seed2;
+            ulong seed1 = _seed1;
+            ulong seed2 = _seed2;
             long num = (long)seed1 + (long)seed2;
             ulong x = seed2 ^ seed1;
-            this._seed1 = (ulong)((long)Xoroshiro128.rotl(seed1, 55) ^ (long)x ^ (long)x << 14);
-            this._seed2 = Xoroshiro128.rotl(x, 36);
+            _seed1 = (ulong)((long)Xoroshiro128.rotl(seed1, 55) ^ (long)x ^ ((long)x << 14));
+            _seed2 = Xoroshiro128.rotl(x, 36);
             return (ulong)num;
         }
 
@@ -131,15 +131,15 @@ namespace Penguin.Random.Prng.FullCycle
                 {
                     if ((JumpValue[index1] & (ulong)(1L << index2)) > 0UL)
                     {
-                        num1 ^= this._seed1;
-                        num2 ^= this._seed2;
+                        num1 ^= _seed1;
+                        num2 ^= _seed2;
                     }
 
-                    _ = (long)this.Next();
+                    _ = (long)Next();
                 }
             }
-            this._seed1 = num1;
-            this._seed2 = num2;
+            _seed1 = num1;
+            _seed2 = num2;
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Penguin.Random.Prng.FullCycle
         /// <returns>The next double from the sequence created from the next ulong</returns>
         public double NextDouble()
         {
-            return this.Next() / ulong.MaxValue;
+            return Next() / ulong.MaxValue;
         }
 
         /// <summary>The previous machine state used for saving/loading</summary>

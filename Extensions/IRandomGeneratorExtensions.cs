@@ -1,5 +1,4 @@
-﻿using Penguin.Math.Extensions;
-using Penguin.Random.Interfaces;
+﻿using Penguin.Random.Interfaces;
 
 namespace Penguin.Random.Extensions
 {
@@ -14,12 +13,7 @@ namespace Penguin.Random.Extensions
         /// <returns>The next value in the sequence below the max value</returns>
         public static T Next<T>(this IRandomGenerator<T> rng, T MaxValue)
         {
-            if (rng is null)
-            {
-                throw new System.ArgumentNullException(nameof(rng));
-            }
-
-            return rng.Next(default, MaxValue);
+            return rng is null ? throw new System.ArgumentNullException(nameof(rng)) : rng.Next(default, MaxValue);
         }
     }
 }

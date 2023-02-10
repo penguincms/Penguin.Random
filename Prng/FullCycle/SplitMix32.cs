@@ -6,14 +6,13 @@
 
 using Penguin.Random.Interfaces;
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Penguin.Random.Prng.FullCycle
 {
     /// <summary>And implementation of a Xoroshiro64 RNG</summary>
-    public class SplitMix32 : IRandomGenerator<UInt32>
+    public class SplitMix32 : IRandomGenerator<uint>
     {
-        private UInt32 _seed;
+        private uint _seed;
 
         /// <summary>
         /// Creates an instance of this RNG using the given state as the starting point
@@ -21,9 +20,9 @@ namespace Penguin.Random.Prng.FullCycle
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
         public SplitMix32()
         {
-            System.Random r = new System.Random();
+            System.Random r = new();
 
-            _seed = unchecked((UInt32)r.Next());
+            _seed = unchecked((uint)r.Next());
         }
 
         /// <summary>
@@ -37,16 +36,15 @@ namespace Penguin.Random.Prng.FullCycle
                 throw new ArgumentNullException(nameof(state));
             }
 
-            this._seed = state._seed;
+            _seed = state._seed;
         }
 
         /// <summary>
         /// Creates an instance of this RNG using the given state as the starting point
         /// </summary>
-        /// <param name="state"></param>
         public SplitMix32(uint seed)
         {
-            this._seed = seed;
+            _seed = seed;
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Penguin.Random.Prng.FullCycle
         {
             return new SplitMix32.State()
             {
-                _seed = this._seed,
+                _seed = _seed,
             };
         }
 
@@ -75,7 +73,7 @@ namespace Penguin.Random.Prng.FullCycle
 
         /// <summary>Get the next ulong for this instance.</summary>
         /// <returns>Next psuedo-random value.</returns>
-        public UInt32 Next(UInt32 min, UInt32 max)
+        public uint Next(uint min, uint max)
         {
             uint z = Next();
 
@@ -93,14 +91,14 @@ namespace Penguin.Random.Prng.FullCycle
         /// <returns>The next double from the sequence created from the next ulong</returns>
         public double NextDouble()
         {
-            return this.Next() / UInt32.MaxValue;
+            return Next() / uint.MaxValue;
         }
 
         /// <summary>The previous machine state used for saving/loading</summary>
         public class State
         {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-            public UInt32 _seed;
+            public uint _seed;
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         }
     }

@@ -6,12 +6,11 @@
 
 using Penguin.Random.Interfaces;
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Penguin.Random.Prng.FullCycle
 {
     /// <summary>And implementation of a Xoroshiro64 RNG</summary>
-    public class Mulberry32 : IRandomGenerator<UInt32>
+    public class Mulberry32 : IRandomGenerator<uint>
     {
         private uint _seed;
 
@@ -28,9 +27,9 @@ namespace Penguin.Random.Prng.FullCycle
         /// </summary>
         public Mulberry32()
         {
-            System.Random r = new System.Random();
+            System.Random r = new();
 
-            _seed = unchecked((UInt32)r.Next());
+            _seed = unchecked((uint)r.Next());
         }
 
         /// <summary>
@@ -44,7 +43,7 @@ namespace Penguin.Random.Prng.FullCycle
                 throw new ArgumentNullException(nameof(state));
             }
 
-            this._seed = state._seed;
+            _seed = state._seed;
         }
 
         /// <summary>
@@ -56,7 +55,7 @@ namespace Penguin.Random.Prng.FullCycle
         {
             return new Mulberry32.State()
             {
-                _seed = this._seed,
+                _seed = _seed,
             };
         }
 
@@ -65,14 +64,14 @@ namespace Penguin.Random.Prng.FullCycle
         public uint Next()
         {
             uint z = _seed += 0x6D2B79F5;
-            z = (z ^ z >> 15) * (1 | z);
-            z ^= z + (z ^ z >> 7) * (61 | z);
-            return z ^ z >> 14;
+            z = (z ^ (z >> 15)) * (1 | z);
+            z ^= z + ((z ^ (z >> 7)) * (61 | z));
+            return z ^ (z >> 14);
         }
 
         /// <summary>Get the next ulong for this instance.</summary>
         /// <returns>Next psuedo-random value.</returns>
-        public UInt32 Next(UInt32 min, UInt32 max)
+        public uint Next(uint min, uint max)
         {
             uint z = Next();
 
@@ -90,14 +89,14 @@ namespace Penguin.Random.Prng.FullCycle
         /// <returns>The next double from the sequence created from the next ulong</returns>
         public double NextDouble()
         {
-            return this.Next() / UInt32.MaxValue;
+            return Next() / uint.MaxValue;
         }
 
         /// <summary>The previous machine state used for saving/loading</summary>
         public class State
         {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-            public UInt32 _seed;
+            public uint _seed;
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         }
     }
